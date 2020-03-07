@@ -24,9 +24,9 @@ func main() {
 func handler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, firePenguin())
 	out, _ := exec.Command("ls", "-la").Output()
-	fmt.Fprintln(w, out)
+	fmt.Fprintln(w, string(out))
 	out, _ = exec.Command("whoami").Output()
-	fmt.Fprintln(w, out)
+	fmt.Fprintln(w, string(out))
 }
 
 func calcFireProbability() float64 {
