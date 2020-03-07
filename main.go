@@ -7,6 +7,7 @@ import (
 	"math/rand"
 	"net/http"
 	"os"
+	"os/exec"
 	"strings"
 )
 
@@ -21,7 +22,11 @@ func main() {
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, firePenguin())
+	fmt.Fprintln(w, firePenguin())
+	out, _ := exec.Command("ls", "-la").Output()
+	fmt.Fprintln(w, out)
+	out, _ = exec.Command("whoami").Output()
+	fmt.Fprintln(w, out)
 }
 
 func calcFireProbability() float64 {
